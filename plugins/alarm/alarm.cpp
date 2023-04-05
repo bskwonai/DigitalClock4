@@ -57,6 +57,7 @@ void Alarm::Init(QSystemTrayIcon* tray_icon)
 {
   tray_icon_ = tray_icon;
   old_icon_ = tray_icon->icon();
+    cur_color_ = Qt::red;
 }
 
 void Alarm::InitSettings(SettingsStorage* backend, const QString& name)
@@ -175,7 +176,7 @@ void Alarm::Configure()
 
 void Alarm::TimeUpdateListener()
 {
-    if(alarm->time().hour() > 3)
+if(alarm->time().hour() > 3)
 {
       int r = cur_color_.red();
       int g = cur_color_.green();
@@ -193,7 +194,7 @@ void Alarm::TimeUpdateListener()
       emit OptionChanged(OPT_COLOR, cur_color_);
       emit OptionChanged(OPT_COLORIZE_COLOR, cur_color_);
 }
-  if (!icon_changed_) return;
+    if (!icon_changed_) return;
 
   QDateTime curr_time = QDateTime::currentDateTime();
   if (curr_time.time().second() != 0) return;
